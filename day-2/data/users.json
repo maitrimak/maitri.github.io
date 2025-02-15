@@ -1,0 +1,23 @@
+{
+  "users":
+          [
+            {
+              "DisplayName" : "Maitri Makwana",
+              "EmailAddress" : "maitrinmakwana9@gmail.com",
+              "Username": "maitriM",
+              "Password": "MM123"
+            },
+            {
+              "DisplayName" : "Maitri",
+              "EmailAddress" : "maitrimakwana@gmail.com",
+              "Username": "maitri24",
+              "Password": "MM1234"
+            },
+            {
+              "DisplayName" : "Makwana",
+              "EmailAddress" : "maitrimakwana9@gmail.com",
+              "Username": "maitri24m",
+              "Password": "MM12345"
+            }
+          ]
+}
