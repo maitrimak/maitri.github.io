@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+
+  <!-- Bootstrap & FontAwesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Shared CSS for Login and Register Forms -->
+  <style>
+    /* Shared Styles */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .form-container {
+      background: white;
+      border-radius: 12px;
+      margin-top: 50px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-container h1 {
+      font-family: 'Lobster', cursive;
+      font-size: 2.5rem;
+      color: #007BFF;
+      text-align: center;
+    }
+
+    .form-container .form-control {
+      border-radius: 20px;
+      padding: 10px 15px;
+    }
+
+    .form-container .btn-primary {
+      background-color: #007BFF;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-container .btn-primary:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .form-container .input-group-text {
+      background-color: #f1f1f1;
+      border: none;
+      border-radius: 20px 0 0 20px;
+    }
+
+    .form-container .alert {
+      border-radius: 20px;
+    }
+
+    .form-container a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .form-container a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Login Form -->
+<div class="form-container">
+  <h1>Login</h1>
+
+  <!-- Error Message -->
+  <div id="loginMessage" class="alert alert-danger d-none"></div>
+
+  <!-- Login Form -->
+  <form id="loginForm">
+    <!-- Username Field -->
+    <div class="mb-3">
+      <label for="loginUsername" class="form-label">Username</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
+        <input type="text" class="form-control" id="loginUsername" required placeholder="Enter your username">
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div class="mb-3">
+      <label for="loginPassword" class="form-label">Password</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        <input type="password" class="form-control" id="loginPassword" required placeholder="Enter your password">
+      </div>
+    </div>
+
+    <!-- Login Button -->
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </form>
+
+  <!-- Register Link -->
+  <p class="text-center text-muted mt-3">
+    Don't have an account? <a href="register.html">Register Here!</a>
+  </p>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript for Login Form -->
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+    const messageArea = document.getElementById('loginMessage');
+
+    // Simple validation
+    if (username === 'user1' && password === 'password1') {
+      messageArea.classList.remove('alert-danger');
+      messageArea.classList.add('alert-success');
+      messageArea.textContent = 'Login successful! Redirecting...';
+      messageArea.classList.remove('d-none');
+
+      // Redirect to dashboard after 2 seconds
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 2000);
+    } else {
+      messageArea.classList.remove('alert-success');
+      messageArea.classList.add('alert-danger');
+      messageArea.textContent = 'Invalid username or password. Please try again.';
+      messageArea.classList.remove('d-none');
+    }
+  });
+</script>
+</body>
+</html>

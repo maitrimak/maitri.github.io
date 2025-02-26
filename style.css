@@ -1,0 +1,24 @@
+/*
+Name: Maitri Makwana & Shivani Patel  
+Group: 7  
+Description: Assignment 2: Enhancing User Experience with AJAX and APIs -  
+This project is enhancing the "Volunteer Connect" website by integrating  
+AJAX for dynamic content loading, API integration, search functionality,  
+user authentication, and interactive forms.  
+Date: 22/02/2025  
+Course: INFT 2202
+*/
+
+/* Setting the maximum width of the carousel and centering it */
+#volunteerCarousel {
+    max-width: 100%; /* Ensuring the carousel is fitting within the page layout */
+    margin: 0 auto; /* Aligning the carousel to the center */
+    object-fit: fill; /* Making sure images are filling the entire space */
+}
+
+/* Styling images inside the carousel */
+.carousel-inner img {
+    max-height: 500px; /* Restricting the maximum height of images */
+    width: 100%; /* Making images stretch across the entire carousel width */
+    object-fit: cover; /* Preventing image distortion by cropping instead of stretching */
+}

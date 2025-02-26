@@ -1,0 +1,78 @@
+[
+  {
+    "src": "../images/gallery1.jpg",
+    "alt": "Event 1",
+    "title": "Community Cleanup Drive"
+  },
+  {
+    "src": "../images/gallery2.jpg",
+    "alt": "Event 2",
+    "title": "Helping Elders"
+  },
+  {
+    "src": "../images/gallery3.jpg",
+    "alt": "Event 3",
+    "title": "Tree Plantation Drive"
+  },
+  {
+    "src": "../images/gallery4.jpg",
+    "alt": "Event 4",
+    "title": "Drive for Donations"
+  },
+  {
+    "src": "../images/gallery5.jpg",
+    "alt": "Event 5",
+    "title": "Food Charity"
+  },
+  {
+    "src": "../images/gallery6.jpg",
+    "alt": "Event 6",
+    "title": "Blood Donation Camp"
+  },
+  {
+    "src": "../images/gallery7.jpg",
+    "alt": "Event 7",
+    "title": "Beach Cleaning Initiative"
+  },
+  {
+    "src": "../images/gallery8.jpg",
+    "alt": "Event 8",
+    "title": "Teaching Underprivileged Kids"
+  },
+  {
+    "src": "../images/gallery9.jpg",
+    "alt": "Event 9",
+    "title": "Orphanage Visit"
+  },
+  {
+    "src": "../images/gallery10.jpg",
+    "alt": "Event 10",
+    "title": "Animal Rescue and Care"
+  },
+  {
+    "src": "../images/gallery11.jpg",
+    "alt": "Event 11",
+    "title": "Awareness Campaign on Recycling"
+  },
+  {
+    "src": "../images/gallery12.jpg",
+    "alt": "Event 12",
+    "title": "Women Empowerment Workshop"
+  },
+  {
+    "src": "../images/gallery13.jpg",
+    "alt": "Event 13",
+    "title": "Sports Day for Disabled Kids"
+  },
+  {
+    "src": "../images/gallery15.jpg",
+    "alt": "Event 15",
+    "title": "Sports Day for Disabled Kids"
+  },
+  {
+    "src": "../images/gallery14.jpg",
+    "alt": "Event 14",
+    "title": "Disaster Relief Support"
+  }
+
+]

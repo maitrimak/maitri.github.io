@@ -1,0 +1,179 @@
+<!--
+Name: Maitri Makwana & Shivani Patel
+Group: 7
+Description: Assignment 2: Enhancing User Experience with AJAX and APIs -
+This project is enhancing the "Volunteer Connect" website by integrating
+AJAX for dynamic content loading, API integration, search functionality,
+user authentication, and interactive forms.
+Date: 22/02/2025
+Course: INFT 2202
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+
+  <!-- Linking external stylesheets and Bootstrap for styling -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<style>
+  /* Setting the default font and background color */
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+
+  /* Applying gradient background for navigation bar */
+  nav {
+    background: linear-gradient(90deg, #007BFF, #00C853);
+  }
+
+  /* Styling the brand logo in the navbar */
+  .navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: 2rem;
+    color: #fff !important;
+  }
+
+  /* Styling navigation links */
+  .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  /* Adding hover effect on navigation links */
+  .nav-link:hover {
+    color: #FFD700 !important;
+  }
+
+  /* Styling the search bar */
+  .search-bar {
+    width: 250px;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 15px;
+  }
+
+  /* Styling the search results dropdown */
+  .search-results {
+    display: none;
+    background: white;
+    position: absolute;
+    width: 250px;
+    top: 45px;
+    left: 0;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  /* Styling the list inside search results */
+  .search-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Styling each search result item */
+  .search-results li {
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  /* Adding hover effect to search results */
+  .search-results li:hover {
+    background-color: #f1f1f1;
+  }
+</style>
+<body>
+
+<!-- Navbar is displaying the main navigation menu -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Volunteer Connect</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="opportunities.html">Volunteer Now</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="news.html">Newz</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="donate.html">Donate</a></li>
+      </ul>
+
+      <!-- Search Bar is allowing users to search for events, opportunities, or news -->
+      <div class="position-relative">
+        <input type="text" id="searchInput" class="search-bar form-control" placeholder="Search...">
+        <div id="searchResults" class="search-results"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Navigation bar is displaying links for different pages -->
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="opportunities.html">Volunteer Now</a></li>
+    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+
+    <!-- Dropdown menu is allowing users to access additional links -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        More
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="privacy.html">Privacy Policy</a></li>
+        <li><a class="dropdown-item" href="terms.html">Terms of Service</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<!-- Main content section is introducing Volunteer Connect -->
+<div class="container mt-4">
+  <h1 class="text-center">About Volunteer Connect</h1>
+
+  <!-- Description is explaining the purpose of the platform -->
+  <p class="mt-4">
+    Volunteer Connect is a platform that is bringing together individuals who are wanting to make a positive impact in their communities.
+    Our mission is connecting volunteers with meaningful opportunities where they are contributing their time, skills,
+    and passion toward causes they are caring about.
+  </p>
+
+  <!-- Content is explaining different ways users are participating in volunteering -->
+  <p>
+    Whether it’s participating in local cleanup drives, helping with food distribution, or supporting educational initiatives,
+    Volunteer Connect is aiming to create a seamless experience for volunteers and organizations alike.
+    We are believing in the power of community and are striving to foster a culture of giving back and creating change.
+  </p>
+
+  <!-- Section is describing the mission of the platform -->
+  <h3>Our Mission</h3>
+  <p>
+    Our mission is empowering individuals and organizations to work together to create sustainable and impactful changes in their communities.
+    We are envisioning a world where everyone is having the opportunity to contribute to causes that are mattering to them,
+    making volunteering accessible to all.
+  </p>
+</div>
+
+<!-- Footer is displaying the copyright information -->
+<footer class="text-center mt-4">
+  <p>&copy; Volunteer Connect created by Maitri Makwana & Shivani Patel </p>
+</footer>
+
+</body>
+</html>

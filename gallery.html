@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Volunteer Connect</title>
+
+  <!-- Linking external stylesheets and Bootstrap for styling -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Defer JavaScript execution -->
+  <script src="main.js" defer></script>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Navbar with smooth transition */
+    nav {
+      background: linear-gradient(90deg, #007BFF, #00C853);
+      transition: background-color 0.5s ease-in-out, transform 0.3s ease;
+    }
+
+    .navbar-brand {
+      font-family: 'Lobster', cursive;
+      font-size: 2rem;
+      color: #fff !important;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: #FFD700 !important;
+      transform: scale(1.1);
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-family: 'Pacifico', cursive;
+      color: #007BFF;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    h2:hover {
+      transform: scale(1.1);
+    }
+
+    /* Updated Gallery Image Styles */
+    .gallery img {
+      width: 100%;
+      height: 350px; /* Increased image size */
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, filter 0.4s ease-in-out;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+      filter: brightness(1.2);
+    }
+
+    /* Smooth scrolling effect */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Footer fade-in effect */
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      background: #007BFF;
+      color: #fff;
+      opacity: 0;
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+
+    /* Button hover effect */
+    .btn-custom {
+      background: linear-gradient(90deg, #00C853, #007BFF);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      transform: scale(1.1);
+      background: linear-gradient(90deg, #007BFF, #00C853);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Volunteer Connect</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="opportunities.html">Opportunities</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="donate.html">Donate</a></li>
+        <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Gallery Section -->
+<div class="container">
+  <h2>Volunteer Events Gallery</h2>
+  <div class="row gallery">
+    <div class="col-md-4">
+      <a href="images/gallery1.jpg" data-lightbox="gallery" data-title="Volunteer Event 1">
+        <img src="images/gallery1.jpg" alt="Volunteer Event 1">
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="images/gallery2.jpg" data-lightbox="gallery" data-title="Volunteer Event 2">
+        <img src="images/gallery2.jpg" alt="Volunteer Event 2">
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="images/gallery3.jpg" data-lightbox="gallery" data-title="Volunteer Event 3">
+        <img src="images/gallery3.jpg" alt="Volunteer Event 3">
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="images/gallery4.jpg" data-lightbox="gallery" data-title="Volunteer Event 4">
+        <img src="images/gallery4.jpg" alt="Volunteer Event 4">
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="images/gallery5.jpg" data-lightbox="gallery" data-title="Volunteer Event 5">
+        <img src="images/gallery5.jpg" alt="Volunteer Event 5">
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="images/gallery6.jpg" data-lightbox="gallery" data-title="Volunteer Event 6">
+        <img src="images/gallery6.jpg" alt="Volunteer Event 6">
+      </a>
+    </div>
+    <div class="row gallery">
+      <div class="col-md-4">
+        <a href="images/gallery7.jpg" data-lightbox="gallery" data-title="Volunteer Event 1">
+          <img src="images/gallery7.jpg" alt="Volunteer Event 1">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="images/gallery8.jpg" data-lightbox="gallery" data-title="Volunteer Event 2">
+          <img src="images/gallery8.jpg" alt="Volunteer Event 2">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="images/gallery9.jpg" data-lightbox="gallery" data-title="Volunteer Event 3">
+          <img src="images/gallery9.jpg" alt="Volunteer Event 3">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="images/gallery10.jpg" data-lightbox="gallery" data-title="Volunteer Event 4">
+          <img src="images/gallery10.jpg" alt="Volunteer Event 4">
+        </a>
+      </div>
+        <div class="col-md-4">
+          <a href="images/gallery11.jpg" data-lightbox="gallery" data-title="Volunteer Event 1">
+            <img src="images/gallery11.jpg" alt="Volunteer Event 1">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="images/gallery12.jpg" data-lightbox="gallery" data-title="Volunteer Event 2">
+            <img src="images/gallery12.jpg" alt="Volunteer Event 2">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="images/gallery13.jpg" data-lightbox="gallery" data-title="Volunteer Event 3">
+            <img src="images/gallery13.jpg" alt="Volunteer Event 3">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="images/gallery14.jpg" data-lightbox="gallery" data-title="Volunteer Event 4">
+            <img src="images/gallery14.jpg" alt="Volunteer Event 4">
+          </a>
+        </div>
+        <div class="col-md-4">
+        <a href="images/gallery15.jpg" data-lightbox="gallery" data-title="Volunteer Event 4">
+          <img src="images/gallery15.jpg" alt="Volunteer Event 4">
+        </a>
+        </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Volunteer Connect | Made by Maitri Makwana & Shivani Patel</p>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+</body>
+</html>

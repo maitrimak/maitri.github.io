@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events</title>
+
+  <!-- Linking Bootstrap for styling -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <!-- Linking Google Fonts for a modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Setting global font and background color */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Applying gradient background for navigation bar */
+    nav {
+      background: linear-gradient(90deg, #007BFF, #00C853);
+    }
+
+    /* Styling the brand logo in the navbar */
+    .navbar-brand {
+      font-family: 'Lobster', cursive;
+      font-size: 2rem;
+      color: #fff !important;
+    }
+
+    /* Styling navigation links */
+    .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    /* Adding hover effect on navigation links */
+    .nav-link:hover {
+      color: #FFD700 !important;
+    }
+
+    /* Styling the search bar */
+    .search-bar {
+      width: 250px;
+      border-radius: 20px;
+      border: none;
+      padding: 5px 15px;
+    }
+
+    /* Styling headings and titles */
+    h1, .card-title {
+      font-family: 'Poppins', sans-serif;
+      color: #007bff;
+    }
+
+    /* Styling event cards */
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ffffff, #f1f8ff);
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Ensuring images fit within event cards */
+    .card-img-top {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+      transition: transform 0.3s ease;
+    }
+
+    .card-img-top:hover {
+      transform: scale(1.05);
+    }
+
+    /* Styling card body */
+    .card-body {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Styling the primary buttons */
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    /* Styling the map container */
+    #map {
+      height: 500px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 30px 0;
+      border: 2px solid #007bff;
+      transition: box-shadow 0.3s ease;
+    }
+
+    #map:hover {
+      box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Styling the map loading indicator */
+    .map-loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 500px;
+      font-family: 'Poppins',serif;
+      color: #007bff;
+    }
+
+    /* Adding animation for loading spinner */
+    .spinner {
+      width: 3rem;
+      height: 3rem;
+      border: 0.25em solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: spinner 0.75s linear infinite;
+    }
+
+    @keyframes spinner {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Adding fade-in animation for event cards */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .event-card {
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .event-card:nth-child(1) { animation-delay: 0.1s; }
+    .event-card:nth-child(2) { animation-delay: 0.2s; }
+    .event-card:nth-child(3) { animation-delay: 0.3s; }
+    .event-card:nth-child(4) { animation-delay: 0.4s; }
+    .event-card:nth-child(5) { animation-delay: 0.5s; }
+    .event-card:nth-child(6) { animation-delay: 0.6s; }
+    .event-card:nth-child(7) { animation-delay: 0.7s; }
+    .event-card:nth-child(8) { animation-delay: 0.8s; }
+    .event-card:nth-child(9) { animation-delay: 0.9s; }
+
+    /* Styling the sign-up modal */
+    #signUpModal .modal-content {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #signUpModal .modal-header {
+      background: linear-gradient(135deg, #007BFF, #00C853);
+      color: white;
+      border-radius: 12px 12px 0 0;
+    }
+
+    #signUpModal .modal-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    #signUpModal .modal-body {
+      padding: 20px;
+    }
+
+    #signUpModal .form-label {
+      font-weight: 500;
+      color: #007BFF;
+    }
+
+    #signUpModal .form-control {
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #signUpModal .form-control:focus {
+      border-color: #007BFF;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    }
+
+    #signUpModal .btn-primary {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* Styling the thank-you modal */
+    #thankYouModal .modal-content {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #thankYouModal .modal-header {
+      background: linear-gradient(135deg, #007BFF, #00C853);
+      color: white;
+      border-radius: 12px 12px 0 0;
+    }
+
+    #thankYouModal .modal-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    #thankYouModal .modal-body {
+      padding: 20px;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #007BFF;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar is displaying the main navigation menu -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Volunteer Connect</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="opportunities.html">Volunteer Now</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="news.html">Newz</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="donate.html">Donate</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            More
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="privacy.html">Privacy Policy</a></li>
+            <li><a class="dropdown-item" href="terms.html">Terms of Service</a></li>
+            <li><a class="dropdown-item" href="gallery.html">Privacy Policy</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Search Bar is allowing users to search for events, opportunities, or news -->
+      <div class="position-relative">
+        <label for="search-Input"></label><input type="text" id="search-Input" class="search-bar form-control" placeholder="Search...">
+        <div id="searchResults" class="search-results"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Section is displaying upcoming events -->
+<div class="container mt-4">
+  <h1 class="text-center">Upcoming Events</h1>
+
+  <!-- Map is displaying event locations -->
+  <div class="map-loading">
+    <div class="spinner"></div>
+    Loading Events Map...
+  </div>
+  <div id="map"></div>
+
+  <!-- Filters are allowing users to search events dynamically -->
+  <div class="filters">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <select id="locationFilter" class="form-select">
+          <option value="">All Locations</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <select id="dateFilter" class="form-select">
+          <option value="">All Dates</option>
+        </select>
+      </div>
+    </div>
+  </div>
+      <div class="col-md-4">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search events...">
+      </div>
+    </div>
+  </div>
+
+  <!-- Events container is holding dynamically loaded events -->
+  <div id="opportunitiesContainer" class="row mt-4"></div>
+</div>
+
+<!-- Footer is displaying copyright information -->
+<footer class="text-center mt-4">
+  <p>&copy; Volunteer Connect created by Maitri Makwana & Shivani Patel</p>
+</footer>
+
+<!-- Sign Up Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signUpModalLabel">Sign Up for Event</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="signUpForm">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" required>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" required>
+          </div>
+          <div class="mb-3">
+            <label for="contact" class="form-label">Contact</label>
+            <input type="tel" class="form-control" id="contact" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="age" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Thank You Modal -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="thankYouModalLabel">Thank You!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Thank you for signing up! You will be redirected to the home page shortly.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Including Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Including Google Maps API for event locations -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiCVJl4kivL6VOCwkDuXWqctT5ziyBYXo&callback=initMap" async defer></script>
+
+<script>
+  // Function is initializing the map and displaying event markers
+  function initMap() {
+    document.querySelector('.map-loading').remove();
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 11,
+      center: { lat: 43.8971, lng: -78.8658 }
+    });
+
+
+    const events = [
+      { title: "Charity Walkathon", location: "Lakeview Park", lat: 43.8573, lng: -78.8296 },
+      { title: "Beach Cleanup", location: "Whitby Beach", lat: 43.8454, lng: -78.9320 },
+      { title: "Food Donation", location: "Downtown Community Center", lat: 43.8971, lng: -78.8658 },
+      { title: "Blood Donation Camp", location: "City Hospital", lat: 43.8801, lng: -78.8943 },
+      { title: "Tree Plantation Drive", location: "Green Park", lat: 43.8625, lng: -78.9127 },
+      { title: "Animal Shelter Visit", location: "Animal Care Center", lat: 43.8712, lng: -78.8765 },
+      { title: "Elderly Care Volunteering", location: "Sunrise Retirement Home", lat: 43.8918, lng: -78.9014 },
+      { title: "Community Clean-up", location: "Downtown Streets", lat: 43.8995, lng: -78.8821 },
+      { title: "Book Donation Drive", location: "City Library", lat: 43.8847, lng: -78.8912 }
+
+    ];
+
+    events.forEach(event => {
+      new google.maps.Marker({
+        position: { lat: event.lat, lng: event.lng },
+        map,
+        title: event.title
+      });
+    });
+  }
+
+  // Handle Google Maps API loading errors
+  window.gm_authFailure = function() {
+    alert("Google Maps failed to load. Please check your API key and network connection.");
+  };
+
+  // Event Filtering and Search
+  document.getElementById('searchInput').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const events = document.querySelectorAll('.event-card');
+    events.forEach(event => {
+      const eventTitle = event.querySelector('.card-title').textContent.toLowerCase();
+      if (eventTitle.includes(searchTerm)) {
+        event.style.display = '';
+      } else {
+        event.style.display = 'none';
+      }
+    });
+  });
+
+  const events = [
+    { title: "Charity Walkathon", location: "Lakeview Park", date: "2025-03-15", description: "Join us for a walkathon to raise funds for local charities." },
+    { title: "Beach Cleanup", location: "Whitby Beach", date: "2025-04-10", description: "Help us clean up Whitby Beach and protect marine life." },
+    { title: "Food Donation", location: "Downtown Community Center", date: "2025-05-20", description: "Donate food items to support families in need." },
+    { title: "Blood Donation Camp", location: "City Hospital", date: "2025-06-05", description: "Donate blood and save lives at our annual camp." },
+    { title: "Tree Plantation Drive", location: "Green Park", date: "2025-07-15", description: "Plant trees and contribute to a greener future." },
+    { title: "Animal Shelter Visit", location: "Animal Care Center", date: "2025-08-10", description: "Spend time with rescued animals and volunteer for their care." },
+    { title: "Elderly Care Volunteering", location: "Sunrise Retirement Home", date: "2025-09-05", description: "Spend quality time with the elderly and help with activities." },
+    { title: "Community Clean-up", location: "Downtown Streets", date: "2025-10-20", description: "Join hands to clean up our community and make it beautiful." },
+    { title: "Book Donation Drive", location: "City Library", date: "2025-11-15", description: "Donate books to provide education to those in need." }
+  ];
+
+  const opportunitiesContainer = document.getElementById('opportunitiesContainer');
+  events.forEach(event => {
+    const eventCard = document.createElement('div');
+    eventCard.className = 'col-md-4 mb-4 event-card';
+    eventCard.innerHTML = `
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">${event.title}</h5>
+          <p class="card-text"><strong>Location:</strong> ${event.location}</p>
+          <p class="card-text"><strong>Date:</strong> ${event.date}</p>
+          <p class="card-text">${event.description}</p>
+        </div>
+      </div>
+    `;
+    eventCard.addEventListener('click', () => {
+      const modal = new bootstrap.Modal(document.getElementById('signUpModal'));
+      modal.show();
+    });
+    opportunitiesContainer.appendChild(eventCard);
+  });
+
+  // Handle Sign Up Form Submission
+  document.getElementById('signUpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const contact = document.getElementById('contact').value;
+    const email = document.getElementById('email').value;
+    const age = document.getElementById('age').value;
+
+    // Here you can send the form data to your backend or handle it as needed
+    console.log({ firstName, lastName, contact, email });
+
+    // Close the sign-up modal
+    const signUpModal = bootstrap.Modal.getInstance(document.getElementById('signUpModal'));
+    signUpModal.hide();
+
+    // Show the thank-you modal
+    const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
+    thankYouModal.show();
+
+    // Redirect to home page after 8 seconds
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 8000);
+  });
+</script>
+
+</body>
+</html>
